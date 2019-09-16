@@ -1,21 +1,81 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<app-header></app-header>
+<div class="display-flex align-items-center justify-content-even margin-right-05
+    padding-05 filter-display-container">
+    <div class="display-flex align-items-center">
+        <!-- <h3>No Filters applied</h3> -->
+        <!-- <h3>Applied filters: </h3> -->
+        <mat-chip-list aria-label="Fish selection">
+            <mat-chip selected>
+                <span matTooltip="tooltip" class="ellipsis width-10">asddddddddddddddddddddddddddddddd</span>
+                <mat-icon matChipRemove>cancel</mat-icon>
+            </mat-chip>
+        </mat-chip-list>
+    </div>
+    <div class="display-flex align-items-center">
+        <a class="display-flex align-items-center">
+            <span class="font-bold">Experience</span>
+            <mat-icon class="main-blue-color">{{ 'arrow_upward' }}</mat-icon>
+        </a>
+        <a class="margin-left-05 display-flex align-items-center">
+            <span class="font-bold">Location</span>
+            <mat-icon class="main-blue-color">{{ 'arrow_upward' }}</mat-icon>
+        </a>
+        <mat-icon matTooltip="Filters" [matMenuTriggerFor]="menu"
+            class="cursor-hand margin-left-05">filter_list</mat-icon>
+        <mat-menu (click)="$event.stopPropagation();" #menu="matMenu"
+            class="padding-15">
+            <h4 class="margin-none margin-bottom-05">FILTERS</h4>
+            <mat-divider></mat-divider>
+            <mat-form-field class="full-width">
+                <input (click)="$event.stopPropagation();" matInput
+                    placeholder="Company Name">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input (click)="$event.stopPropagation();" matInput
+                    placeholder="Location">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input (click)="$event.stopPropagation();" matInput
+                    placeholder="Skill">
+            </mat-form-field>
+            <div class="full-width">
+                <span class="full-width">Experience({{ experience > 19 ?
+                    '20+' : experience }})</span>
+                <mat-slider (click)="$event.stopPropagation();" max="20"
+                    min="0" step="1" thumbLabel="true" color="primary"
+                    [(ngModel)]="experience"></mat-slider>
+            </div>
+            <div class="display-flex justify-content-end">
+                <button mat-button>Reset</button>
+                <button color="primary" mat-button>Apply</button>
+            </div>
+        </mat-menu>
+    </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
-<router-outlet></router-outlet>
+<mat-divider></mat-divider>
+<div class="job-sort-container display-flex padding-05 justify-content-even align-items-center">
+    <div class="display-flex justify-content-even align-items-center]">
+        <div class="display-flex">
+            <a class="display-flex
+                align-items-center" [ngClass]="{'main-blue-color': true}">
+                <mat-icon>work</mat-icon>
+                <span>All</span>
+            </a>
+            <a class="margin-left-2
+                display-flex align-items-center" [ngClass]="{'main-blue-color':
+                false}">
+                <mat-icon>work_offline</mat-icon>
+                <span>Expiring</span>
+            </a>
+        </div>    
+    </div>
+    <mat-paginator 
+        [length]="100"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator>
+</div>
+<div class="main-container">
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
+</div>

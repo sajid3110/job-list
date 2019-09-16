@@ -1,0 +1,14 @@
+.main-container {
+    height: calc(100vh - 15em);
+    overflow: auto;
+}
+.margin-left-05 { margin-left: 0.5em; }
+.margin-right-05 { margin-right: 0.5em; }
+.margin-left-2 { margin-left: 2em; }
+a { cursor: pointer; }
+.font-bold { font-weight: bold; }
+.margin-bottom-05 { margin-bottom: 0.5em; }
+mat-slider { width: 90%; }
+/deep/ .mat-menu-content { width: 15em; }
+.filter-display-container{ height: 4em; }
+.job-sort-container { height: 4em; }
