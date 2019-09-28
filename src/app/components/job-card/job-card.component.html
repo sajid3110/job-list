@@ -20,7 +20,10 @@
     </p>
     <div class="display-flex full-width justify-content-even">
         <span class="display-flex align-items-center"><mat-icon>credit_card</mat-icon>{{ (data.salary == "") ? "Salary not disclosed" : data.salary }}</span>
-        <span class="display-flex align-items-center">Expiry: {{ (data.enddate != "") ? data.enddate : "Not disclosed" }}</span>
+        <span class="display-flex align-items-center">
+          <span class="secondary-text">Expiry</span>: 
+          <span>{{ (data.enddate != "") ? data.enddate : "Not disclosed" }}</span>
+        </span>
     </div>
   </mat-card-content>
   <mat-card-actions class="display-flex justify-content-end">
