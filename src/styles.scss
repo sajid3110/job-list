@@ -9,7 +9,7 @@ $fontsize18: 1.125em;
 $fontsize20: 1.250em;
 $fontsize24: 1.5em;
 $fontsize36: 2.250em;
-$main-blue-color: #0288d1;
+$main-blue-color: blue;
 
 *
 {
@@ -49,9 +49,17 @@ body, h3, div, dl, dt, input, li, p, pre, select, td, textarea, span {
 .padding-05 { padding: 0.5em; }
 .padding-15 { padding: 1.5em; }
 .margin-none { margin: 0; }
+.margin-left-05 { margin-left: 0.5em; }
 .mat-chip { font-size: 11px; }
 .ellipsis { text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
 
 .mat-chip { background-color: #0288d1 !important; }
 .mat-chip-list-wrapper { height: 4em; overflow: auto; }
 .mat-card-header-text { margin: 0 !important; }
+
+.mat-chip { background: white !important; color: dimgray !important; border: 0.5px solid blue;}
+.mat-chip-remove { color: blue !important; }
+.primary-btn { border: 1px solid green !important; }
+.secondary-btn { border: 1px solid blue !important; }
+.mat-drawer-inner-container { overflow-x: hidden !important; }
+.secondary-text { color: dimgray; }

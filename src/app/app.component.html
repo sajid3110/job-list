@@ -1,81 +1,35 @@
 <app-header></app-header>
-<div class="display-flex align-items-center justify-content-even margin-right-05
-    padding-05 filter-display-container">
-    <div class="display-flex align-items-center">
-        <!-- <h3>No Filters applied</h3> -->
-        <!-- <h3>Applied filters: </h3> -->
-        <mat-chip-list aria-label="Fish selection">
-            <mat-chip selected>
-                <span matTooltip="tooltip" class="ellipsis width-10">asddddddddddddddddddddddddddddddd</span>
-                <mat-icon matChipRemove>cancel</mat-icon>
-            </mat-chip>
-        </mat-chip-list>
-    </div>
-    <div class="display-flex align-items-center">
-        <a class="display-flex align-items-center">
-            <span class="font-bold">Experience</span>
-            <mat-icon class="main-blue-color">{{ 'arrow_upward' }}</mat-icon>
-        </a>
-        <a class="margin-left-05 display-flex align-items-center">
-            <span class="font-bold">Location</span>
-            <mat-icon class="main-blue-color">{{ 'arrow_upward' }}</mat-icon>
-        </a>
-        <mat-icon matTooltip="Filters" [matMenuTriggerFor]="menu"
-            class="cursor-hand margin-left-05">filter_list</mat-icon>
-        <mat-menu (click)="$event.stopPropagation();" #menu="matMenu"
-            class="padding-15">
-            <h4 class="margin-none margin-bottom-05">FILTERS</h4>
-            <mat-divider></mat-divider>
-            <mat-form-field class="full-width">
-                <input (click)="$event.stopPropagation();" matInput
-                    placeholder="Company Name">
-            </mat-form-field>
-            <mat-form-field class="full-width">
-                <input (click)="$event.stopPropagation();" matInput
-                    placeholder="Location">
-            </mat-form-field>
-            <mat-form-field class="full-width">
-                <input (click)="$event.stopPropagation();" matInput
-                    placeholder="Skill">
-            </mat-form-field>
-            <div class="full-width">
-                <span class="full-width">Experience({{ experience > 19 ?
-                    '20+' : experience }})</span>
-                <mat-slider (click)="$event.stopPropagation();" max="20"
-                    min="0" step="1" thumbLabel="true" color="primary"
-                    [(ngModel)]="experience"></mat-slider>
+<mat-drawer-container>
+    <mat-drawer #sideNav class="search-drawer" mode="side" opened>
+        <app-search (closeSideNav)="sideNav.close();"></app-search>
+    </mat-drawer>
+    <mat-drawer-content>
+        <div class="display-flex align-items-center justify-content-even margin-right-05
+        padding-05 filter-display-container">
+            <div class="display-flex align-items-center">
+                <mat-icon *ngIf="!sideNav.opened" (click)="sideNav.open();" class="cursor-hand" matTooltip="Filters">filter_list</mat-icon>            
+                <mat-chip-list aria-label="Fish selection">
+                    <mat-chip *ngFor="let chip of arrChipList" selected>
+                        <span matTooltip="{{ chip.value }}" class="ellipsis max-width-10">{{ chip.value }}</span>
+                        <!-- <mat-icon matChipRemove>cancel</mat-icon> -->
+                    </mat-chip>
+                </mat-chip-list>
             </div>
-            <div class="display-flex justify-content-end">
-                <button mat-button>Reset</button>
-                <button color="primary" mat-button>Apply</button>
-            </div>
-        </mat-menu>
-    </div>
-</div>
-<mat-divider></mat-divider>
-<div class="job-sort-container display-flex padding-05 justify-content-even align-items-center">
-    <div class="display-flex justify-content-even align-items-center]">
-        <div class="display-flex">
-            <a class="display-flex
-                align-items-center" [ngClass]="{'main-blue-color': true}">
-                <mat-icon>work</mat-icon>
-                <span>All</span>
-            </a>
-            <a class="margin-left-2
-                display-flex align-items-center" [ngClass]="{'main-blue-color':
-                false}">
-                <mat-icon>work_offline</mat-icon>
-                <span>Expiring</span>
-            </a>
-        </div>    
-    </div>
-    <mat-paginator 
-        [length]="100"
-        [pageSize]="10"
-        [pageSizeOptions]="[5, 10, 25, 100]">
-    </mat-paginator>
-</div>
-<div class="main-container">
-    <router-outlet></router-outlet>
-    <app-footer></app-footer>
-</div>
+            <h3>{{ blnShowingAllJobs ? "Showing All jobs" : "Showing Jobs expiring in the next 7 days"}}</h3>
+            <!-- <div class="display-flex align-items-center">
+                <a class="display-flex align-items-center">
+                    <span class="font-bold secondary-text">Experience</span>
+                    <mat-icon class="main-blue-color">{{ 'arrow_upward' }}</mat-icon>
+                </a>
+                <a class="margin-left-05 display-flex align-items-center">
+                    <span class="font-bold secondary-text">Location</span>
+                    <mat-icon class="main-blue-color">{{ 'arrow_upward' }}</mat-icon>
+                </a>
+            </div> -->
+        </div>
+        <div class="content-container">
+            <router-outlet></router-outlet>
+            <app-footer></app-footer>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

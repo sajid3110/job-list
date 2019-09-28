@@ -1,0 +1,38 @@
+<div>
+  <div class="display-flex align-items-center justify-content-even">
+    <h4>FILTERS</h4>
+    <mat-icon (click)="closeSidenav();" class="cursor-hand">arrow_back</mat-icon>    
+  </div>
+  <mat-divider></mat-divider>
+  <div class="search-form-container">
+    <mat-radio-group [(ngModel)]="jobType">
+      <mat-radio-button color="primary" value="all">All</mat-radio-button>
+      <mat-radio-button color="primary" class="margin-left-05" value="expiring">Expiring</mat-radio-button>
+    </mat-radio-group> 
+    <mat-form-field class="full-width margin-top-1">
+      <input [(ngModel)]="company" (click)="$event.stopPropagation();" matInput
+          placeholder="Company Name">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input [(ngModel)]="location" (click)="$event.stopPropagation();" matInput
+          placeholder="Location">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input [(ngModel)]="skill" (click)="$event.stopPropagation();" matInput
+          placeholder="Skill">
+    </mat-form-field>
+    <div class="full-width">
+      <span class="full-width secondary-text">Experience</span>
+      <mat-select [(ngModel)]="experience">
+        <mat-option *ngFor="let item of arrExperienceOptions" [value]="item.key">
+          {{ item.value }}
+        </mat-option>
+      </mat-select>
+    </div>
+  </div>  
+  <mat-divider></mat-divider>
+  <div class="display-flex justify-content-end margin-top-1">
+      <button class="secondary-btn" (click)="onSearchReset();" mat-button>RESET</button>
+      <button class="primary-btn margin-left-05" (click)="onSearchApply();" mat-button>APPLY</button>
+  </div>
+</div>

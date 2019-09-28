@@ -1,11 +1,12 @@
 <div class="list-display-container">
-  
-
-  <div class="job-list-container display-flex">
-    <app-job-card></app-job-card>
-    <app-job-card></app-job-card>
-    <app-job-card></app-job-card>
-    <app-job-card></app-job-card>
-    <app-job-card></app-job-card>
+  <div class="display-flex align-items-center justify-content-even paginator-div">
+    <span class="result-text margin-left-05">Found {{ pageLength }} jobs</span>
+    <mat-paginator (page)="onPageChange($event);" [hidePageSize]="true" [length]="pageLength"
+      [pageSize]="pageSize">
+    </mat-paginator>
   </div>
+  <div class="job-list-container display-flex">
+    <app-job-card *ngFor="let job of arrSlicedJobList" [data]="job"></app-job-card>
+  </div>
+  <h1 class="padding-05" *ngIf="arrJobList.length < 1">No jobs found</h1>
 </div>

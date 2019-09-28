@@ -15,6 +15,9 @@ import { FormsModule } from '@angular/forms';
 import { MaterialModule } from './material-module';
 import { JobCardComponent } from './components/job-card/job-card.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SearchComponent } from './components/search/search.component';
+import { JobService } from 'src/app/services/job.service';
+import { NotifyService } from 'src/app/services/notify.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
     JobsComponent,
-    JobCardComponent
+    JobCardComponent,
+    SearchComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -33,6 +37,8 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   providers: [
+    JobService,
+    NotifyService,
     {provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig}
   ],
   bootstrap: [AppComponent]
