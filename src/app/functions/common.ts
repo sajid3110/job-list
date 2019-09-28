@@ -3,7 +3,6 @@ export function filterData(data, filterObj) {
         // assuming that today is Aug 15 2018
         let currentDate = new Date("Aug 15 2018");
         let sevenDaysInMilliseconds = 604800000;
-        console.log(currentDate);
         let filteredData = data.filter(x => (
             (x.companyname.toLowerCase().includes(filterObj.company == "" ? x.companyname.toLowerCase() : filterObj.company.toLowerCase())) &&
             (x.location.toLowerCase().includes(filterObj.location == "" ? x.location.toLowerCase() : filterObj.location.toLowerCase())) &&
